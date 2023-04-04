@@ -21,13 +21,13 @@ destination_language=args.destination_language
 
 
 def speakOriginText(phrase):
-    googleSpeechURL = "http://translate.google.com/translate_tts?tl="+ origin_language +"&q=" + phrase
+    googleSpeechURL = "http://translate.google.com/translate_tts?tl="+ origin_language +"&ie=UTF-8&q=" + phrase
     subprocess.call(["mplayer",googleSpeechURL], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 def speakDestinationText(phrase):
-    googleSpeechURL = "http://translate.google.com/translate_tts?tl=" + destination_language +"&q=" + phrase
-    print googleSpeechURL
-    subprocess.call(["mplayer",googleSpeechURL], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    googleSpeechURL = "http://translate.google.com/translate_tts?tl=" + destination_language +"&ie=UTF-8&q=" + phrase
+    print googleSpeechURL.encode("utf-8")
+    subprocess.call(["mplayer",googleSpeechURL.encode("utf-8")], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 args = {
         'client_id': '',#your client id here
